@@ -57,14 +57,36 @@ public class Main {
 
         Model mip = new Model(n, w);
 
-        System.out.println("MIP model created");
-        System.out.println("Solving...");
+        //System.out.println("MIP model created");
+        //System.out.println("Solving...");
 
         mip.solve(timeLimit, threads);
 
-        System.out.println("runTime          : " + mip.runTime());
-        System.out.printf("objValue         : %.0f\n", mip.objVal());
-        System.out.println("gap              : " + mip.gap());
+        //System.out.println("runTime          : " + mip.runTime());
+        //System.out.printf("objValue         : %.0f\n", mip.objVal());
+        //System.out.println("gap              : " + mip.gap());
+/*
+        println!("{:40} | {:10} | {:10} | {:10} | {:10.3} | {}",
+                name,
+                status(completion),
+                lb, ub,
+                duration.as_secs_f32(),
+                solution_to_string(n, solution));
+*/
+        String status = "Timeout";
+        if (mip.gap() == 0.0) {
+            status = "Proved";
+        }
+
+        double lb = mip.objVal();
+        double ub = lb + (lb * mip.gap());
+
+        String inst = new File(args[0]).getName();
+
+        System.out.println(
+                String.format("%-40s | %-10s | %-10d | %-10d | %10.3f | solution discarded",
+                        inst, status, (int) Math.rint(lb), (int) Math.rint(ub), mip.runTime())
+        );
 
         mip.dispose();
     }

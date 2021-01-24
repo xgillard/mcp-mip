@@ -11,7 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>11</java.version>
+        <java.version>1.8</java.version>
 
 		<!-- You probably want to change this to match your local machine   -->
 		<!-- but chances are high that it should be the right place for you -->

@@ -51,12 +51,12 @@ public class Model {
         model.set(GRB.DoubleParam.TimeLimit, timeLimit);
         if (threads > 0) model.set(GRB.IntParam.Threads, threads);
         model.optimize();
-
+/*
         System.out.print("assignment       :");
         for (int i = 0; i < x.length; i++)
             System.out.printf("%2.0f ", x[i].get(GRB.DoubleAttr.X));
-
         System.out.println();
+ */
     }
 
     public double gap() throws GRBException {
